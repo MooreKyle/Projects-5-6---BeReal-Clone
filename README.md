@@ -1,8 +1,8 @@
-# Project 5 - *Name of App Here*
+# Project 5 - *BeReal Clone Part 1*
 
-Submitted by: **Your Name Here**
+Submitted by: **Kyle Moore**
 
-**Name of your app** is an app that ... [TODO] 
+**BeReal Clone** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. 
 
 Time spent: **X** hours spent in total
 
@@ -40,7 +40,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Kyle Moore]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
