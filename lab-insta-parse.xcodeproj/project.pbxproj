@@ -379,9 +379,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MA6H73S726;
+				DEVELOPMENT_TEAM = 2P8L5FVUU5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lab-insta-parse/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = BeReal;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -407,9 +408,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MA6H73S726;
+				DEVELOPMENT_TEAM = 2P8L5FVUU5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lab-insta-parse/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = BeReal;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
