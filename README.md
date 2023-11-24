@@ -4,24 +4,24 @@ Submitted by: **Kyle Moore**
 
 **BeReal Clone** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. 
 
-Time spent: **X** hours spent in total
+Time spent: **8** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] User can register a new account
-- [ ] User can log in with newly created account
-- [ ] App has a feed of posts when user logs in
-- [ ] User can upload a new post which takes in a picture from photo library and a caption	
+- [x] User can register a new account
+- [x] User can log in with newly created account
+- [x] App has a feed of posts when user logs in
+- [x] User can upload a new post which takes in a picture from photo library and a caption	
  
 The following **optional** features are implemented:
 
-- [ ] Users can pull to refresh their feed and see a loading indicator
-- [ ] Users can infinite-scroll in their feed to see past the 10 most recent photos
+- [x] Users can pull to refresh their feed and see a loading indicator
+- [x] Users can infinite-scroll in their feed to see past the 10 most recent photos
 - [ ] Users can see location and time of photo upload in the feed	
-- [ ] User is able to logout
-- [ ] User stays logged in when app is closed and open again	
+- [x] User is able to logout
+- [x] User stays logged in when app is closed and open again	
 
 
 The following **additional** features are implemented:
