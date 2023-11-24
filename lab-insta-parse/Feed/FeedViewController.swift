@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
-// TODO: Import Parse Swift
 import ParseSwift
 
 class FeedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+
+    let refreshControl = UIRefreshControl()
 
     private var posts = [Post]() {
         didSet {
@@ -27,27 +27,57 @@ class FeedViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
+
+        // Set up pull-to-refresh
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+
+        // Load initial data
+        queryPosts()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
+    private func fetchData(completion: @escaping () -> Void) {
+        // Fetch new data here (replace this with your actual implementation)
+        // For example, you can make a network request to get new posts from the server
         queryPosts()
+        completion()
+    }
+
+    private func showLoadingIndicator() {
+        // Show loading indicator (replace this with your actual implementation)
+        // For example, you can display a spinner or other loading UI
+    }
+
+    private func hideLoadingIndicator() {
+        // Hide loading indicator (replace this with your actual implementation)
+        // For example, you can hide the spinner or loading UI
+    }
+
+    @objc func refreshFeed() {
+        // Show loading indicator
+        showLoadingIndicator()
+
+        // Make network request to fetch new data
+        fetchData { [weak self] in
+            // Hide loading indicator
+            self?.hideLoadingIndicator()
+
+            // Stop the refresh control
+            self?.refreshControl.endRefreshing()
+
+            // Update your table view (this assumes you've fetched new data and updated the 'posts' array)
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
 
     private func queryPosts() {
         // TODO: Pt 1 - Query Posts
-// https://github.com/parse-community/Parse-Swift/blob/3d4bb13acd7496a49b259e541928ad493219d363/ParseSwift.playground/Pages/2%20-%20Finding%20Objects.xcplaygroundpage/Contents.swift#L66
-        
-
-        // 1. Create a query to fetch Posts
-        // 2. Any properties that are Parse objects are stored by reference in Parse DB and as such need to explicitly use `include_:)` to be included in query results.
-        // 3. Sort the posts by descending order based on the created at date
         let query = Post.query()
             .include("user")
             .order([.descending("createdAt")])
 
-        // Fetch objects (posts) defined in query (async)
         query.find { [weak self] result in
             switch result {
             case .success(let posts):
@@ -57,8 +87,6 @@ class FeedViewController: UIViewController {
                 self?.showAlert(description: error.localizedDescription)
             }
         }
-
-
     }
 
     @IBAction func onLogOutTapped(_ sender: Any) {
