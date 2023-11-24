@@ -1,8 +1,8 @@
 //
 //  PostCell.swift
-//  lab-insta-parse
+//  Project 5 - BeReal Clone Part 1
 //
-//  Created by Charlie Hieger on 11/3/22.
+//  Created by Kyle Moore on 11/23/23.
 //
 
 import UIKit
