@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Project 5 - BeReal Clone Part 1
+//  lab-insta-parse
 //
-//  Created by Kyle Moore on 11/23/23.
+//  Created by Charlie Hieger on 10/29/22.
 //
 
 import UIKit
@@ -33,7 +33,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         // TODO: Pt 1 - Check for cached user for persisted log in.
-        // Check if a current user exists
         if User.current != nil {
             login()
         }
@@ -69,7 +68,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("❌ Log out error: \(error)")
             }
         }
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

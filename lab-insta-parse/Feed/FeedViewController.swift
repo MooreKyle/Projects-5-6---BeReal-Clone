@@ -1,18 +1,19 @@
 //
 //  FeedViewController.swift
-//  Project 5 - BeReal Clone Part 1
+//  lab-insta-parse
 //
-//  Created by Kyle Moore on 11/23/23.
+//  Created by Charlie Hieger on 11/1/22.
 //
 
 import UIKit
+
+// TODO: P1 1 - Import Parse Swift
 import ParseSwift
 
 class FeedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-
-    let refreshControl = UIRefreshControl()
+    private let refreshControl = UIRefreshControl()
 
     private var posts = [Post]() {
         didSet {
@@ -28,64 +29,50 @@ class FeedViewController: UIViewController {
         tableView.dataSource = self
         tableView.allowsSelection = false
 
-        // Set up pull-to-refresh
-        tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(onPullToRefresh), for: .valueChanged)
+    }
 
-        // Load initial data
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         queryPosts()
     }
 
-    private func fetchData(completion: @escaping () -> Void) {
-        // Fetch new data here (replace this with your actual implementation)
-        // For example, you can make a network request to get new posts from the server
-        queryPosts()
-        completion()
-    }
-
-    private func showLoadingIndicator() {
-        // Show loading indicator (replace this with your actual implementation)
-        // For example, you can display a spinner or other loading UI
-    }
-
-    private func hideLoadingIndicator() {
-        // Hide loading indicator (replace this with your actual implementation)
-        // For example, you can hide the spinner or loading UI
-    }
-
-    @objc func refreshFeed() {
-        // Show loading indicator
-        showLoadingIndicator()
-
-        // Make network request to fetch new data
-        fetchData { [weak self] in
-            // Hide loading indicator
-            self?.hideLoadingIndicator()
-
-            // Stop the refresh control
-            self?.refreshControl.endRefreshing()
-
-            // Update your table view (this assumes you've fetched new data and updated the 'posts' array)
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }
-    }
-
-    private func queryPosts() {
+    private func queryPosts(completion: (() -> Void)? = nil) {
         // TODO: Pt 1 - Query Posts
+        // https://github.com/parse-community/Parse-Swift/blob/3d4bb13acd7496a49b259e541928ad493219d363/ParseSwift.playground/Pages/2%20-%20Finding%20Objects.xcplaygroundpage/Contents.swift#L66
+
+        // 1. Create a query to fetch Posts
+        // 2. Any properties that are Parse objects are stored by reference in Parse DB and as such need to explicitly use `include_:)` to be included in query results.
+        // 3. Sort the posts by descending order based on the created at date
+        // 4. TODO: Pt 2 - Only include results created yesterday onwards
+        
+        // 5. TODO: Pt 2 - Limit max number of returned posts
+
+        // Get the date for yesterday. Adding (-1) day is equivalent to subtracting a day.
+        // NOTE: `Date()` is the date and time of "right now".
+        let yesterdayDate = Calendar.current.date(byAdding: .day, value: (-1), to: Date())!
+                           
         let query = Post.query()
             .include("user")
             .order([.descending("createdAt")])
+            .where("createdAt" >= yesterdayDate) // <- Only include results created yesterday onwards
+            .limit(10) // <- Limit max number of returned posts to 10
 
+        // Find and return posts that meet query criteria (async)
         query.find { [weak self] result in
             switch result {
             case .success(let posts):
-                // Update local posts property with fetched posts
+                // Update the local posts property with fetched posts
                 self?.posts = posts
             case .failure(let error):
                 self?.showAlert(description: error.localizedDescription)
             }
+
+            // Call the completion handler (regardless of error or success, this will signal the query finished)
+            // This is used to tell the pull-to-refresh control to stop refresshing
+            completion?()
         }
     }
 
@@ -93,8 +80,15 @@ class FeedViewController: UIViewController {
         showConfirmLogoutAlert()
     }
 
+    @objc private func onPullToRefresh() {
+        refreshControl.beginRefreshing()
+        queryPosts { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
+    }
+
     private func showConfirmLogoutAlert() {
-        let alertController = UIAlertController(title: "Log out of your account?", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Log out of \(User.current?.username ?? "current account")?", message: nil, preferredStyle: .alert)
         let logOutAction = UIAlertAction(title: "Log out", style: .destructive) { _ in
             NotificationCenter.default.post(name: Notification.Name("logout"), object: nil)
         }
@@ -103,18 +97,11 @@ class FeedViewController: UIViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
-
-    private func showAlert(description: String? = nil) {
-        let alertController = UIAlertController(title: "Oops...", message: "\(description ?? "Please try again...")", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true)
-    }
 }
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

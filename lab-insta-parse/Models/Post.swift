@@ -1,8 +1,8 @@
 //
 //  Post.swift
-//  Project 5 - BeReal Clone Part 1
+//  lab-insta-parse
 //
-//  Created by Kyle Moore on 11/23/23.
+//  Created by Charlie Hieger on 11/29/22.
 //
 
 import Foundation
