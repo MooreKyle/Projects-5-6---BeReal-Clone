@@ -4,7 +4,7 @@ Submitted by: **Kyle Moore**
 
 **BeReal Clone part 2** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. In this second part of the project, it adds persistence and extended functionality to the app, including other features, such as using your device's camera to take a picture and share it OR use a unique photo that is added to the photo library.
 
-Time spent: **6** hours spent in total
+Time spent: **10** hours spent in total
 
 ## Required Features
 
@@ -18,7 +18,8 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] User receive notifcation when it is time to post
-- [ ] Users can make comments and view comments in posts	
+- [x] Users can make comments and view comments in posts
+      (partial implementation - all necessary code and storyboard swift file code)
 
 The following **additional** features are implemented:
 
@@ -27,6 +28,8 @@ The following **additional** features are implemented:
 ## Notes
 
 Describe any challenges encountered while building the app.
+     - Issues implementing code for comments, however, was implemented successfully, albeit unused.
+     - Difficulty figuring out implementation of comments - storyboard, linking, and other elements necessary for comments to work properly.
 
 ## License
 
