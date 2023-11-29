@@ -1,31 +1,24 @@
-# ios102-lab6-spring23
+# Project 6 - *BeReal Part 2*
 
-TODO// Update README with new lab 6 gif
+Submitted by: **Kyle Moore**
 
-<<<<<<< HEAD
-![instaparse_walkthrough_1_xtra_small](https://user-images.githubusercontent.com/11927517/199710313-700aef85-ba89-427c-aa07-f89f0fdfdbbe.gif)
-=======
-**BeReal Clone** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. 
+**BeReal Clone part 2** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. In this second part of the project, it adds persistence and extended functionality to the app, including other features, such as using your device's camera to take a picture and share it OR use a unique photo that is added to the photo library.
 
-Time spent: **8** hours spent in total
+Time spent: **6** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] User can register a new account
-- [x] User can log in with newly created account
-- [x] App has a feed of posts when user logs in
-- [x] User can upload a new post which takes in a picture from photo library and a caption	
+- [x] User can launch camera to take photo instead of photo library (OR user uploads unique photo from photo album)
+- [x] User session persists when application is closed and relaunched
+- [x] Users are able to log out and return to sign in page
+- [x] Users are NOT able to see other photos until they upload their own	
  
 The following **optional** features are implemented:
 
-- [x] Users can pull to refresh their feed and see a loading indicator
-- [x] Users can infinite-scroll in their feed to see past the 10 most recent photos
-- [ ] Users can see location and time of photo upload in the feed	
-- [x] User is able to logout
-- [x] User stays logged in when app is closed and open again	
-
+- [ ] User receive notifcation when it is time to post
+- [ ] Users can make comments and view comments in posts	
 
 The following **additional** features are implemented:
 
@@ -50,4 +43,3 @@ Describe any challenges encountered while building the app.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
->>>>>>> main
