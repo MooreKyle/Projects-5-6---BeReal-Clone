@@ -25,4 +25,17 @@ struct Post: ParseObject {
     var caption: String?
     var user: User?
     var imageFile: ParseFile?
+    
+    var comments: [Comment]?
+}
+
+struct Comment: ParseObject {
+    var objectId: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+    var ACL: ParseACL?
+    var originalData: Data?
+
+    var text: String?
+    var user: User?
 }

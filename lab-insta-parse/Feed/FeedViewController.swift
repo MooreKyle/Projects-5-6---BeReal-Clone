@@ -6,14 +6,36 @@
 //
 
 import UIKit
-
-// TODO: P1 1 - Import Parse Swift
 import ParseSwift
 
 class FeedViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
+
+    // Function to add a comment to a post
+    func addCommentToPost(post: Post) {
+        var mutablePost = post  // Make a mutable copy
+        var comment = Comment()
+        comment.text = "This is a comment."
+        comment.user = User.current // Assuming you have a reference to the current user
+
+        mutablePost.comments?.append(comment)
+
+        mutablePost.save { [weak self] result in
+            switch result {
+            case .success(let updatedPost):
+                // Update your UI to reflect the new comment
+                // You might need to reload specific cells or update your data source
+                if let index = self?.posts.firstIndex(where: { $0.objectId == updatedPost.objectId }) {
+                    self?.posts[index] = updatedPost
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error saving comment: \(error)")
+            }
+        }
+    }
 
     private var posts = [Post]() {
         didSet {
@@ -40,18 +62,12 @@ class FeedViewController: UIViewController {
     }
 
     private func queryPosts(completion: (() -> Void)? = nil) {
-        // TODO: Pt 1 - Query Posts
-        // https://github.com/parse-community/Parse-Swift/blob/3d4bb13acd7496a49b259e541928ad493219d363/ParseSwift.playground/Pages/2%20-%20Finding%20Objects.xcplaygroundpage/Contents.swift#L66
-
         // 1. Create a query to fetch Posts
         // 2. Any properties that are Parse objects are stored by reference in Parse DB and as such need to explicitly use `include_:)` to be included in query results.
         // 3. Sort the posts by descending order based on the created at date
         // 4. TODO: Pt 2 - Only include results created yesterday onwards
-        
         // 5. TODO: Pt 2 - Limit max number of returned posts
-
-        // Get the date for yesterday. Adding (-1) day is equivalent to subtracting a day.
-        // NOTE: `Date()` is the date and time of "right now".
+        
         let yesterdayDate = Calendar.current.date(byAdding: .day, value: (-1), to: Date())!
                            
         let query = Post.query()

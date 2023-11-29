@@ -15,6 +15,8 @@ class PostCell: UITableViewCell {
     @IBOutlet private weak var postImageView: UIImageView!
     @IBOutlet private weak var captionLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet weak var commentsLabel: UILabel!
+    
 
     // Blur view to blur out "hidden" posts
     @IBOutlet private weak var blurView: UIVisualEffectView!
@@ -30,11 +32,11 @@ class PostCell: UITableViewCell {
         if let user = post.user {
             usernameLabel.text = user.username
         }
-
+        
         // Image
         if let imageFile = post.imageFile,
            let imageUrl = imageFile.url {
-
+            
             // Use AlamofireImage helper to fetch remote image from URL
             imageDataRequest = AF.request(imageUrl).responseImage { [weak self] response in
                 switch response.result {
@@ -47,9 +49,17 @@ class PostCell: UITableViewCell {
                 }
             }
         }
-
+        
         // Caption
         captionLabel.text = post.caption
+        
+        // Display Comments
+        if let comments = post.comments {
+            let commentsText = comments.map { "\($0.user?.username ?? "Unknown User"): \($0.text ?? "")" }.joined(separator: "\n")
+            commentsLabel.text = commentsText
+        } else {
+            commentsLabel.text = nil
+        }
 
         // Date
         if let date = post.createdAt {
