@@ -1,8 +1,8 @@
 //
 //  DateFormatter+Extensions.swift
-//  lab-insta-parse
+//  Project 6 - BeReal Clone Part 2
 //
-//  Created by Charlie Hieger on 11/3/22.
+//  Created by Kyle Moore on 11/28/23.
 //
 
 import Foundation

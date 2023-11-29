@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  lab-insta-parse
+//  Project 6 - BeReal Clone Part 2
 //
-//  Created by Charlie Hieger on 10/29/22.
+//  Created by Kyle Moore on 11/28/23.
 //
 
 import UIKit
