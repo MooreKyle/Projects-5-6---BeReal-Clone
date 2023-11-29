@@ -1,19 +1,19 @@
-# Project 6 - *Name of App Here*
+# Project 6 - *BeReal Part 2*
 
-Submitted by: **Your Name Here**
+Submitted by: **Kyle Moore**
 
-**Name of your app** is an app that introduces ... [TODO] 
+**BeReal Clone part 2** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. In this second part of the project, it adds persistence and extended functionality to the app, including other features, such as using your device's camera to take a picture and share it OR use a unique photo that is added to the photo library.
 
-Time spent: **X** hours spent in total
+Time spent: **6** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] User can launch camera to take photo instead of photo library
-- [ ] User session persists when application is closed and relaunched
-- [ ] Users are able to log out and return to sign in page
-- [ ] Users are NOT able to see other photos until they upload their own	
+- [x] User can launch camera to take photo instead of photo library (OR user uploads unique photo from photo album)
+- [x] User session persists when application is closed and relaunched
+- [x] Users are able to log out and return to sign in page
+- [x] Users are NOT able to see other photos until they upload their own	
  
 The following **optional** features are implemented:
 
@@ -24,19 +24,13 @@ The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
 
-## Video Walkthrough
-
-Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove this reminder once you upload your README. 
-
-[Guide]](https://www.youtube.com/watch?v=GA92eKlYio4) .
-
 ## Notes
 
 Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Kyle Moore]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
