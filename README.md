@@ -2,7 +2,7 @@
 
 Submitted by: **Kyle Moore**
 
-**BeReal Clone part 2** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even whent he app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. In this second part of the project, it adds persistence and extended functionality to the app, including other features, such as using your device's camera to take a picture and share it OR use a unique photo that is added to the photo library.
+**BeReal Clone part 2** is an app that has users post a photo of what they're currently doing upon receiving a random notification during the day. Only after posting a photo can the user see their friends's photos. The app mimics others in the ability to stay logged in, log out, keep changes, even when the app is closed or restarted several times. This app clones some of the main functionalities of the trending app called 'BeReal'. In this second part of the project, it adds persistence and extended functionality to the app, including other features, such as using your device's camera to take a picture and share it OR use a unique photo that is added to the photo library.
 
 Time spent: **10** hours spent in total
 
